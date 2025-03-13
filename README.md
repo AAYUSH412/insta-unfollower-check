@@ -2,6 +2,7 @@
 
 A free web tool to analyze your Instagram followers and find who doesn't follow you back. Built with React and Tailwind CSS.
 
+![Instagram Unfollower Checker Screenshot](https://insta-unfollower-check.vercel.app/og-image.png)
 
 ## 🌟 Features
 
@@ -13,14 +14,39 @@ A free web tool to analyze your Instagram followers and find who doesn't follow 
 - No Instagram login required
 - Free to use
 
+## 🔒 Privacy Focus
+
+- All data processing happens directly in your browser
+- Your Instagram data never leaves your device
+- No user data is stored on any servers
+- No tracking cookies
+- No authentication required
+
 ## 🚀 Getting Started
 
-### Prerequisites
+### How to Use the App
+
+1. **Download your Instagram data** from the Instagram app:
+   - Go to Settings → Privacy and Security → Data Download
+   - Request data in JSON format
+   - Wait for Instagram to email you the data (can take up to 48 hours)
+   
+2. **Extract the downloaded zip file** from Instagram
+
+3. **Upload the required JSON files**:
+   - Upload `followers_1.json` file
+   - Upload `following.json` file
+   
+4. **Get instant analysis** of your Instagram followers
+
+### Running Locally
+
+#### Prerequisites
 
 - Node.js (v16 or higher)
 - npm or yarn
 
-### Installation
+#### Installation
 
 1. Clone the repository:
 ```bash
@@ -51,16 +77,19 @@ yarn dev
 - [Lucide Icons](https://lucide.dev/) - Icons
 - [Vite](https://vitejs.dev/) - Build tool
 
-## 📝 How to Use
+## 📚 FAQ
 
-1. Download your Instagram data (Settings > Privacy and Security > Data Download)
-2. Extract the downloaded zip file
-3. Upload `followers_1.json` and `following.json` files
-4. Get instant analysis of your Instagram followers
+**Is this tool safe to use?**
+Yes, all data processing happens locally in your browser. Your Instagram data never leaves your device.
 
-## 🔒 Privacy
+**Do I need to log in with my Instagram account?**
+No, you only need to download your Instagram data and upload specific JSON files.
 
-This tool processes all data locally in your browser. No data is sent to any server or stored anywhere.
+**Is this affiliated with Instagram/Meta?**
+No, this is an independent tool and is not affiliated with Instagram or Meta.
+
+**Does this tool store my data?**
+No, all processing happens in your browser. No data is stored on servers.
 
 ## 📄 License
 

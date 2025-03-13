@@ -1,3 +1,9 @@
 User-agent: *
 Allow: /
+Disallow: /api/
+
+# Sitemap
 Sitemap: https://insta-unfollower-check.vercel.app/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 10

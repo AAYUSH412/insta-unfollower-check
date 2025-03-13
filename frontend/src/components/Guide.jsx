@@ -56,6 +56,7 @@ const Guide = () => {
           <button
             onClick={prevStep}
             className="absolute left-4 z-10 p-3 rounded-full bg-gray-900/70 text-white hover:bg-gray-900/90 transition-all transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-purple-500"
+            aria-label="Previous step"
           >
             <ChevronLeft className="w-6 h-6" />
           </button>
@@ -65,7 +66,7 @@ const Guide = () => {
             {(!imageLoaded || isLoading) && (
               <div className="absolute inset-0 flex items-center justify-center bg-gray-900/20 rounded-lg backdrop-blur-sm">
                 <div className="flex flex-col items-center space-y-4">
-                  <Loader className="w-8 h-8 text-purple-400 animate-spin" />
+                  <Loader className="w-8 h-8 text-purple-400 animate-spin" aria-hidden="true" />
                   <span className="text-gray-300">Loading image...</span>
                 </div>
               </div>
@@ -74,11 +75,14 @@ const Guide = () => {
             {/* Main Image */}
             <img
               src={steps[currentStep].image}
-              alt={`Step ${steps[currentStep].id}`}
+              alt={`Step ${steps[currentStep].id}: ${steps[currentStep].title} - ${steps[currentStep].description}`}
               className={`w-full h-auto max-h-[70vh] mx-auto object-contain rounded-lg transition-opacity duration-300 ${
                 imageLoaded ? 'opacity-100' : 'opacity-0'
               }`}
               onLoad={handleImageLoad}
+              loading={currentStep === 0 ? "eager" : "lazy"}
+              width="800" 
+              height="600"
             />
 
             {/* Progress Dots */}
@@ -94,6 +98,7 @@ const Guide = () => {
                         : 'bg-gray-600 hover:bg-gray-500'
                     }`}
                     aria-label={`Go to step ${index + 1}`}
+                    aria-pressed={currentStep === index}
                   />
                 ))}
               </div>
@@ -104,6 +109,7 @@ const Guide = () => {
           <button
             onClick={nextStep}
             className="absolute right-4 z-10 p-3 rounded-full bg-gray-900/70 text-white hover:bg-gray-900/90 transition-all transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-purple-500"
+            aria-label="Next step"
           >
             <ChevronRight className="w-6 h-6" />
           </button>
