@@ -2,7 +2,6 @@
 
 A free web tool to analyze your Instagram followers and find who doesn't follow you back. Built with React and Tailwind CSS.
 
-![Instagram Unfollower Checker Screenshot](https://insta-unfollower-check.vercel.app/og-image.png)
 
 ## 🌟 Features
 
