@@ -8,13 +8,13 @@
   "theme_color": "#8B5CF6",
   "icons": [
     {
-      "src": "/instagram-192.png",
+      "src": "/instagram.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "/instagram-512.png",
+      "src": "/instagram.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
