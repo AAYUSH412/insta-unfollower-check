@@ -15,7 +15,7 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row md:items-center md:space-x-8 space-y-3 md:space-y-0">
             <div className="flex space-x-4 items-center">
               <a 
-                href="https://github.com/AAYUSH412/insta_unfollower_list" 
+                href="https://github.com/AAYUSH412" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 aria-label="GitHub Repository"
