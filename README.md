@@ -22,6 +22,14 @@
     <img src="https://img.shields.io/github/forks/AAYUSH412/insta-unfollower-check?style=social" alt="GitHub forks">
     <img src="https://img.shields.io/github/license/AAYUSH412/insta-unfollower-check?style=flat-square" alt="License">
   </p>
+
+  <p>
+    <img src="https://img.shields.io/github/v/release/AAYUSH412/insta-unfollower-check?style=flat-square&color=success" alt="Latest Release">
+    <img src="https://img.shields.io/github/workflow/status/AAYUSH412/insta-unfollower-check/Build%20and%20Deploy?style=flat-square" alt="Build Status">
+    <img src="https://img.shields.io/website?url=https%3A%2F%2Finsta-unfollower-check.vercel.app&style=flat-square" alt="Website Status">
+    <img src="https://img.shields.io/badge/Privacy-First-brightgreen?style=flat-square" alt="Privacy First">
+    <img src="https://img.shields.io/badge/No%20Login-Required-blue?style=flat-square" alt="No Login Required">
+  </p>
 </div>
 
 ---
