@@ -2,12 +2,15 @@ import { useState } from "react";
 import {
   Upload as UploadIcon,
   X,
-  FileJson,
   Search,
   Users,
   UserMinus,
   ChevronDown,
   ExternalLink,
+  BarChart3,
+  TrendingUp,
+  CheckCircle,
+  AlertCircle,
 } from "lucide-react";
 
 const Unfollowers = () => {
@@ -18,7 +21,6 @@ const Unfollowers = () => {
     const [results, setResults] = useState(null);
     const [searchTerm, setSearchTerm] = useState("");
     const [activeTab, setActiveTab] = useState("unfollowers");
-    const [showStats, setShowStats] = useState(true);
 
   const handleFileUpload = (event, type) => {
     const file = event.target.files[0];
@@ -31,6 +33,41 @@ const Unfollowers = () => {
       setError(null);
     } else {
       setError("Please upload a valid JSON file");
+    }
+  };
+
+  const handleDragOver = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+  };
+
+  const handleDragEnter = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+  };
+
+  const handleDragLeave = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+  };
+
+  const handleDrop = (event, type) => {
+    event.preventDefault();
+    event.stopPropagation();
+    
+    const files = event.dataTransfer.files;
+    if (files.length > 0) {
+      const file = files[0];
+      if (file && file.type === "application/json") {
+        if (type === "followers") {
+          setFollowersFile(file);
+        } else {
+          setFollowingFile(file);
+        }
+        setError(null);
+      } else {
+        setError("Please upload a valid JSON file");
+      }
     }
   };
 
@@ -136,53 +173,78 @@ const Unfollowers = () => {
       title: "Users Who Don't Follow You Back",
       data: results?.unfollowers || [],
       color: "red",
+      bgColor: "bg-red-50",
+      borderColor: "border-red-200",
+      textColor: "text-red-800",
+      iconColor: "text-red-600",
+      hoverColor: "hover:bg-red-100",
       ariaLabel: "List of users who don't follow you back",
-      description: "These Instagram users are in your following list but don't follow you back"
+      description: "These Instagram users are in your following list but don't follow you back",
+      icon: UserMinus,
     },
     followers: {
       title: "Your Followers",
       data: results?.followers || [],
-      color: "green",
+      color: "emerald",
+      bgColor: "bg-emerald-50",
+      borderColor: "border-emerald-200",
+      textColor: "text-emerald-800",
+      iconColor: "text-emerald-600",
+      hoverColor: "hover:bg-emerald-100",
       ariaLabel: "List of your followers",
-      description: "Complete list of users who follow your Instagram account"
+      description: "Complete list of users who follow your Instagram account",
+      icon: Users,
     },
     following: {
       title: "People You Follow",
       data: results?.following || [],
       color: "blue",
+      bgColor: "bg-blue-50",
+      borderColor: "border-blue-200",
+      textColor: "text-blue-800",
+      iconColor: "text-blue-600",
+      hoverColor: "hover:bg-blue-100",
       ariaLabel: "List of people you follow",
-      description: "Complete list of Instagram accounts you are following"
+      description: "Complete list of Instagram accounts you are following",
+      icon: TrendingUp,
     },
     mutualFollowers: {
       title: "Mutual Followers",
       data: results?.mutualFollowers || [],
       color: "purple",
+      bgColor: "bg-purple-50",
+      borderColor: "border-purple-200",
+      textColor: "text-purple-800",
+      iconColor: "text-purple-600",
+      hoverColor: "hover:bg-purple-100",
       ariaLabel: "List of mutual followers",
-      description: "Users who follow you and whom you follow back"
+      description: "Users who follow you and whom you follow back",
+      icon: BarChart3,
     },
   };
 
   const getTabContent = () => {
     if (!results) return null;
 
-    const { title, data, color, ariaLabel, description } = tabData[activeTab];
+    const { title, data, bgColor, borderColor, textColor, hoverColor, ariaLabel, description } = tabData[activeTab];
     const filteredUsers = filterUsers(data);
 
     return (
-      <div className="space-y-4">
-        <div className="flex flex-col space-y-2">
-          <div className="flex items-center justify-between">
-            <h3 className="text-base sm:text-xl font-semibold text-gray-100">
+      <div className="space-y-6">
+        <div className={`${bgColor} ${borderColor} border rounded-xl p-6`}>
+          <div className="flex items-center justify-between mb-3">
+            <h3 className={`text-xl font-bold ${textColor}`}>
               {title}
             </h3>
-            <span className="text-sm text-gray-400">
+            <span className={`text-sm font-semibold px-3 py-1 rounded-full ${bgColor} ${textColor} border ${borderColor}`}>
               {filteredUsers.length} users
             </span>
           </div>
-          <p className="text-sm text-gray-400">{description}</p>
+          <p className="text-gray-600 text-sm leading-relaxed">{description}</p>
         </div>
+        
         <div 
-          className="space-y-2 max-h-[60vh] overflow-y-auto custom-scrollbar"
+          className="space-y-3 max-h-[70vh] overflow-y-auto"
           aria-label={ariaLabel}
           role="list"
         >
@@ -190,35 +252,44 @@ const Unfollowers = () => {
             filteredUsers.map((user, index) => (
               <div
                 key={index}
-                className="flex items-center justify-between p-3 sm:p-4 glass-effect rounded-lg hover:bg-gray-800/50 transition-all group"
+                className={`flex items-center justify-between p-4 bg-white border border-gray-200 rounded-lg ${hoverColor} transition-all duration-200 shadow-sm hover:shadow-md`}
                 role="listitem"
               >
-                <div className="flex items-center space-x-2 sm:space-x-3">
-                  <span
-                    className={`w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-full bg-${color}-900/20 text-${color}-400 font-semibold text-sm sm:text-lg`}
+                <div className="flex items-center space-x-4">
+                  <div
+                    className={`w-12 h-12 flex items-center justify-center rounded-full ${bgColor} ${borderColor} border-2`}
                     aria-hidden="true"
                   >
-                    {user.username[0].toUpperCase()}
-                  </span>
-                  <span className="font-medium text-gray-200 text-sm sm:text-base truncate max-w-[120px] sm:max-w-[200px]">
-                    {user.username}
-                  </span>
+                    <span className={`font-bold text-lg ${textColor}`}>
+                      {user.username[0].toUpperCase()}
+                    </span>
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="font-semibold text-gray-900 text-base">
+                      @{user.username}
+                    </span>
+                    <span className="text-sm text-gray-500">
+                      Instagram Profile
+                    </span>
+                  </div>
                 </div>
                 <a
                   href={user.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center space-x-1 sm:space-x-2 text-purple-300 hover:text-purple-400"
+                  className={`flex items-center space-x-2 px-4 py-2 ${textColor} ${hoverColor} border ${borderColor} rounded-lg transition-all duration-200 hover:shadow-sm font-medium`}
                   aria-label={`View ${user.username}'s Instagram profile`}
                 >
-                  <span className="hidden sm:inline text-sm">View Profile</span>
+                  <span className="text-sm">View Profile</span>
                   <ExternalLink className="w-4 h-4" aria-hidden="true" />
                 </a>
               </div>
             ))
           ) : (
-            <div className="p-6 text-center text-gray-400">
-              No users found matching "{searchTerm}"
+            <div className="p-12 text-center bg-gray-50 rounded-xl border border-gray-200">
+              <Search className="w-12 h-12 text-gray-400 mx-auto mb-4" />
+              <p className="text-gray-600 text-lg">No users found matching &ldquo;{searchTerm}&rdquo;</p>
+              <p className="text-gray-500 text-sm mt-2">Try adjusting your search terms</p>
             </div>
           )}
         </div>
@@ -227,25 +298,38 @@ const Unfollowers = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-2 sm:px-4 py-6 sm:py-12">
-      <div className="glass-effect rounded-xl shadow-xl p-4 sm:p-8">
+    <div className="max-w-6xl mx-auto px-4 py-8">
+      <div className="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden">
         {!results ? (
-          <>
-            <h2 className="text-2xl sm:text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 mb-6 sm:mb-8">
-              Upload Instagram Data Files 📤
-            </h2>
+          <div className="p-8">
+            <div className="text-center mb-10">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl mb-6">
+                <UploadIcon className="w-8 h-8 text-white" />
+              </div>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">
+                Upload Instagram Data Files
+              </h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                Analyze your Instagram followers and following to discover who doesn&apos;t follow you back
+              </p>
+            </div>
 
-            <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
-              <div className="grid grid-cols-1 gap-4">
+            <form onSubmit={handleSubmit} className="space-y-8">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 {/* Followers File Upload */}
-                <div className="space-y-3 sm:space-y-4">
-                  <label htmlFor="followers-file" className="block text-xs sm:text-sm font-medium text-gray-300">
-                    Followers List (followers_1.json)
+                <div className="space-y-4">
+                  <label htmlFor="followers-file" className="block text-sm font-semibold text-gray-900">
+                    Followers List
                   </label>
-                  <div className="flex items-center space-x-4">
+                  <div className="space-y-3">
                     {!followersFile ? (
-                      <div className="flex-1">
-                        <label className="flex justify-center items-center px-4 sm:px-6 py-3 sm:py-4 border-2 border-gray-700 border-dashed rounded-lg cursor-pointer hover:border-purple-500 transition-colors">
+                      <div>
+                        <label className="group relative flex flex-col items-center justify-center w-full h-40 border-2 border-gray-300 border-dashed rounded-xl cursor-pointer bg-gray-50 hover:bg-gray-100 hover:border-blue-400 transition-all duration-200"
+                          onDragOver={handleDragOver}
+                          onDragEnter={handleDragEnter}
+                          onDragLeave={handleDragLeave}
+                          onDrop={(e) => handleDrop(e, "followers")}
+                        >
                           <input
                             type="file"
                             id="followers-file"
@@ -254,32 +338,46 @@ const Unfollowers = () => {
                             onChange={(e) => handleFileUpload(e, "followers")}
                             aria-describedby="followers-file-help"
                           />
-                          <div className="flex items-center space-x-2">
-                            <UploadIcon className="w-5 h-5 sm:w-6 sm:h-6 text-gray-400" aria-hidden="true" />
-                            <span className="text-sm sm:text-base text-gray-400">
-                              Choose followers.json
-                            </span>
+                          <div className="flex flex-col items-center space-y-3">
+                            <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center group-hover:bg-blue-200 transition-colors">
+                              <UploadIcon className="w-6 h-6 text-blue-600" aria-hidden="true" />
+                            </div>
+                            <div className="text-center">
+                              <p className="text-sm font-semibold text-gray-900">
+                                Choose followers_1.json
+                              </p>
+                              <p className="text-xs text-gray-500 mt-1">
+                                Drag and drop or click to browse
+                              </p>
+                            </div>
                           </div>
                         </label>
-                        <p id="followers-file-help" className="mt-1 text-xs text-gray-500">
+                        <p id="followers-file-help" className="text-xs text-gray-500 mt-2">
                           Upload the followers_1.json file from your Instagram data download
                         </p>
                       </div>
                     ) : (
-                      <div className="flex-1 flex items-center justify-between p-3 sm:p-4 bg-purple-900/20 rounded-lg">
-                        <div className="flex items-center space-x-2 sm:space-x-3">
-                          <FileJson className="w-5 h-5 sm:w-6 sm:h-6 text-purple-400" aria-hidden="true" />
-                          <span className="text-xs sm:text-sm font-medium text-gray-300 truncate">
-                            {followersFile.name}
-                          </span>
+                      <div className="flex items-center justify-between p-4 bg-emerald-50 border border-emerald-200 rounded-xl">
+                        <div className="flex items-center space-x-3">
+                          <div className="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center">
+                            <CheckCircle className="w-5 h-5 text-emerald-600" aria-hidden="true" />
+                          </div>
+                          <div>
+                            <p className="text-sm font-semibold text-emerald-900">
+                              {followersFile.name}
+                            </p>
+                            <p className="text-xs text-emerald-700">
+                              File uploaded successfully
+                            </p>
+                          </div>
                         </div>
                         <button
                           type="button"
                           onClick={() => removeFile("followers")}
-                          className="text-gray-400 hover:text-gray-300"
+                          className="text-emerald-600 hover:text-emerald-800 p-2 hover:bg-emerald-100 rounded-lg transition-colors"
                           aria-label="Remove followers file"
                         >
-                          <X className="w-4 h-4 sm:w-5 sm:h-5" aria-hidden="true" />
+                          <X className="w-4 h-4" aria-hidden="true" />
                         </button>
                       </div>
                     )}
@@ -287,14 +385,19 @@ const Unfollowers = () => {
                 </div>
 
                 {/* Following File Upload */}
-                <div className="space-y-3 sm:space-y-4">
-                  <label htmlFor="following-file" className="block text-xs sm:text-sm font-medium text-gray-300">
-                    Following List (following.json)
+                <div className="space-y-4">
+                  <label htmlFor="following-file" className="block text-sm font-semibold text-gray-900">
+                    Following List
                   </label>
-                  <div className="flex items-center space-x-4">
+                  <div className="space-y-3">
                     {!followingFile ? (
-                      <div className="flex-1">
-                        <label className="flex justify-center items-center px-4 sm:px-6 py-3 sm:py-4 border-2 border-gray-700 border-dashed rounded-lg cursor-pointer hover:border-purple-500 transition-colors">
+                      <div>
+                        <label className="group relative flex flex-col items-center justify-center w-full h-40 border-2 border-gray-300 border-dashed rounded-xl cursor-pointer bg-gray-50 hover:bg-gray-100 hover:border-purple-400 transition-all duration-200"
+                          onDragOver={handleDragOver}
+                          onDragEnter={handleDragEnter}
+                          onDragLeave={handleDragLeave}
+                          onDrop={(e) => handleDrop(e, "following")}
+                        >
                           <input
                             type="file"
                             id="following-file"
@@ -303,32 +406,46 @@ const Unfollowers = () => {
                             onChange={(e) => handleFileUpload(e, "following")}
                             aria-describedby="following-file-help"
                           />
-                          <div className="flex items-center space-x-2">
-                            <UploadIcon className="w-5 h-5 sm:w-6 sm:h-6 text-gray-400" aria-hidden="true" />
-                            <span className="text-sm sm:text-base text-gray-400">
-                              Choose following.json
-                            </span>
+                          <div className="flex flex-col items-center space-y-3">
+                            <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center group-hover:bg-purple-200 transition-colors">
+                              <UploadIcon className="w-6 h-6 text-purple-600" aria-hidden="true" />
+                            </div>
+                            <div className="text-center">
+                              <p className="text-sm font-semibold text-gray-900">
+                                Choose following.json
+                              </p>
+                              <p className="text-xs text-gray-500 mt-1">
+                                Drag and drop or click to browse
+                              </p>
+                            </div>
                           </div>
                         </label>
-                        <p id="following-file-help" className="mt-1 text-xs text-gray-500">
+                        <p id="following-file-help" className="text-xs text-gray-500 mt-2">
                           Upload the following.json file from your Instagram data download
                         </p>
                       </div>
                     ) : (
-                      <div className="flex-1 flex items-center justify-between p-3 sm:p-4 bg-purple-900/20 rounded-lg">
-                        <div className="flex items-center space-x-2 sm:space-x-3">
-                          <FileJson className="w-5 h-5 sm:w-6 sm:h-6 text-purple-400" aria-hidden="true" />
-                          <span className="text-xs sm:text-sm font-medium text-gray-300 truncate">
-                            {followingFile.name}
-                          </span>
+                      <div className="flex items-center justify-between p-4 bg-emerald-50 border border-emerald-200 rounded-xl">
+                        <div className="flex items-center space-x-3">
+                          <div className="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center">
+                            <CheckCircle className="w-5 h-5 text-emerald-600" aria-hidden="true" />
+                          </div>
+                          <div>
+                            <p className="text-sm font-semibold text-emerald-900">
+                              {followingFile.name}
+                            </p>
+                            <p className="text-xs text-emerald-700">
+                              File uploaded successfully
+                            </p>
+                          </div>
                         </div>
                         <button
                           type="button"
                           onClick={() => removeFile("following")}
-                          className="text-gray-400 hover:text-gray-300"
+                          className="text-emerald-600 hover:text-emerald-800 p-2 hover:bg-emerald-100 rounded-lg transition-colors"
                           aria-label="Remove following file"
                         >
-                          <X className="w-4 h-4 sm:w-5 sm:h-5" aria-hidden="true" />
+                          <X className="w-4 h-4" aria-hidden="true" />
                         </button>
                       </div>
                     )}
@@ -336,148 +453,180 @@ const Unfollowers = () => {
                 </div>
               </div>
 
-              <button
-                type="submit"
-                disabled={!followersFile || !followingFile || loading}
-                className="w-full flex justify-center items-center px-4 sm:px-6 py-3 sm:py-4 text-sm sm:text-base bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg hover:from-purple-700 hover:to-pink-700 disabled:from-gray-600 disabled:to-gray-600 disabled:cursor-not-allowed transition-all transform hover:scale-[1.02]"
-                aria-live="polite"
-              >
-                {loading ? (
-                  <div className="flex items-center space-x-2" role="status">
-                    <span className="animate-spin rounded-full h-4 w-4 sm:h-5 sm:w-5 border-2 border-b-0 border-white" aria-hidden="true"></span>
-                    <span>Processing...</span>
-                  </div>
-                ) : (
-                  <span className="flex items-center space-x-2">
-                    <span>Compare Files</span>
-                    <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5" aria-hidden="true" />
-                  </span>
-                )}
-              </button>
-            </form>
-
-            <div className="mt-6 sm:mt-8 p-4 sm:p-6 glass-effect rounded-lg border border-gray-800">
-              <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-gray-200">
-                Important Notes:
-              </h3>
-              <ul className="list-disc list-inside space-y-2 text-xs sm:text-sm text-gray-400">
-                <li>Your data is processed locally and never leaves your device</li>
-                <li>Make sure to upload both JSON files for accurate results</li>
-                <li>Files should be named correctly (followers_1.json and following.json)</li>
-                <li>This tool is not affiliated with Instagram or Meta</li>
-              </ul>
-            </div>
-          </>
-        ) : (
-          <>
-            <div className="space-y-6 sm:space-y-8">
-              {showStats && (
-                <div className="grid grid-cols-2 gap-2 sm:gap-3 mb-4 sm:mb-6">
-                  <div className="glass-effect p-2 sm:p-3 rounded-lg">
-                    <div className="flex items-center space-x-2 mb-1">
-                      <Users className="w-3 h-3 sm:w-4 sm:h-4 text-green-400" aria-hidden="true" />
-                      <span className="text-xs text-gray-400">Followers</span>
-                    </div>
-                    <span className="text-sm sm:text-lg md:text-xl font-bold text-gray-100">
-                      {results.total.followers}
-                    </span>
-                  </div>
-                  <div className="glass-effect p-2 sm:p-3 rounded-lg">
-                    <div className="flex items-center space-x-2 mb-1">
-                      <Users className="w-3 h-3 sm:w-4 sm:h-4 text-blue-400" aria-hidden="true" />
-                      <span className="text-xs text-gray-400">Following</span>
-                    </div>
-                    <span className="text-sm sm:text-lg md:text-xl font-bold text-gray-100">
-                      {results.total.following}
-                    </span>
-                  </div>
-                  <div className="glass-effect p-2 sm:p-3 rounded-lg">
-                    <div className="flex items-center space-x-2 mb-1">
-                      <UserMinus className="w-3 h-3 sm:w-4 sm:h-4 text-red-400" aria-hidden="true" />
-                      <span className="text-xs text-gray-400">Non-Followers</span>
-                    </div>
-                    <span className="text-sm sm:text-lg md:text-xl font-bold text-gray-100">
-                      {results.total.unfollowers}
-                    </span>
-                  </div>
-                  <div className="glass-effect p-2 sm:p-3 rounded-lg">
-                    <div className="flex items-center space-x-2 mb-1">
-                      <Users className="w-3 h-3 sm:w-4 sm:h-4 text-purple-400" aria-hidden="true" />
-                      <span className="text-xs text-gray-400">Ratio</span>
-                    </div>
-                    <span className="text-sm sm:text-lg md:text-xl font-bold text-gray-100">
-                      {results.total.ratio}%
-                    </span>
-                  </div>
-                </div>
-              )}
-
-              <div className="flex flex-col space-y-4">
-                <div className="flex flex-wrap gap-2" role="tablist">
-                  {Object.entries(tabData).map(([key, { title, color }]) => (
-                    <button
-                      key={key}
-                      onClick={() => setActiveTab(key)}
-                      className={`px-2 sm:px-3 py-1 sm:py-1.5 text-xs sm:text-sm rounded-lg transition-colors ${
-                        activeTab === key
-                          ? `bg-${color}-900/20 text-${color}-400`
-                          : "text-gray-400 hover:text-gray-300"
-                      }`}
-                      role="tab"
-                      aria-selected={activeTab === key}
-                      aria-controls={`${key}-panel`}
-                      id={`${key}-tab`}
-                    >
-                      {title}
-                    </button>
-                  ))}
-                </div>
-
-                <div className="relative">
-                  <Search className="absolute left-2 sm:left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-3 h-3 sm:w-4 sm:h-4" aria-hidden="true" />
-                  <input
-                    type="text"
-                    placeholder="Search users..."
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full pl-7 sm:pl-9 pr-3 sm:pr-4 py-1.5 sm:py-2 text-xs sm:text-sm bg-gray-900/50 border border-gray-700 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-gray-300 placeholder-gray-500"
-                    aria-label="Search users"
-                  />
-                </div>
-              </div>
-
-              <div 
-                id={`${activeTab}-panel`}
-                role="tabpanel"
-                aria-labelledby={`${activeTab}-tab`}
-              >
-                {getTabContent()}
-              </div>
-
-              <div className="mt-6 sm:mt-8 flex justify-center">
+              <div className="pt-6 border-t border-gray-200">
                 <button
-                  onClick={() => {
-                    setFollowersFile(null);
-                    setFollowingFile(null);
-                    setResults(null);
-                    setSearchTerm("");
-                  }}
-                  className="px-4 sm:px-6 py-1.5 sm:py-2 text-xs sm:text-sm text-gray-400 hover:text-gray-300 transition-colors"
+                  type="submit"
+                  disabled={!followersFile || !followingFile || loading}
+                  className="w-full flex justify-center items-center px-8 py-4 text-base font-semibold bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl hover:from-blue-700 hover:to-purple-700 disabled:from-gray-400 disabled:to-gray-400 disabled:cursor-not-allowed transition-all duration-200 transform hover:scale-[1.02] disabled:transform-none shadow-lg hover:shadow-xl"
+                  aria-live="polite"
                 >
-                  Upload Different Files
+                  {loading ? (
+                    <div className="flex items-center space-x-3" role="status">
+                      <div className="animate-spin rounded-full h-5 w-5 border-2 border-b-0 border-white" aria-hidden="true"></div>
+                      <span>Analyzing Your Instagram Data...</span>
+                    </div>
+                  ) : (
+                    <span className="flex items-center space-x-2">
+                      <BarChart3 className="w-5 h-5" aria-hidden="true" />
+                      <span>Analyze Instagram Data</span>
+                      <ChevronDown className="w-5 h-5" aria-hidden="true" />
+                    </span>
+                  )}
                 </button>
               </div>
+            </form>
+
+            <div className="mt-10 p-6 bg-blue-50 border border-blue-200 rounded-xl">
+              <div className="flex items-start space-x-3">
+                <AlertCircle className="w-6 h-6 text-blue-600 mt-0.5 flex-shrink-0" />
+                <div>
+                  <h3 className="text-base font-semibold mb-3 text-blue-900">
+                    Privacy & Security Information
+                  </h3>
+                  <ul className="space-y-2 text-sm text-blue-800">
+                    <li className="flex items-start space-x-2">
+                      <span className="w-1.5 h-1.5 bg-blue-600 rounded-full mt-2 flex-shrink-0"></span>
+                      <span>Your data is processed locally and never leaves your device</span>
+                    </li>
+                    <li className="flex items-start space-x-2">
+                      <span className="w-1.5 h-1.5 bg-blue-600 rounded-full mt-2 flex-shrink-0"></span>
+                      <span>Make sure to upload both JSON files for accurate results</span>
+                    </li>
+                    <li className="flex items-start space-x-2">
+                      <span className="w-1.5 h-1.5 bg-blue-600 rounded-full mt-2 flex-shrink-0"></span>
+                      <span>Files should be named correctly (followers_1.json and following.json)</span>
+                    </li>
+                    <li className="flex items-start space-x-2">
+                      <span className="w-1.5 h-1.5 bg-blue-600 rounded-full mt-2 flex-shrink-0"></span>
+                      <span>This tool is not affiliated with Instagram or Meta</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
-          </>
+          </div>
+        ) : (
+          <div className="p-8 space-y-8">
+            {/* Statistics Overview */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+              <div className="bg-emerald-50 border border-emerald-200 p-6 rounded-xl">
+                <div className="flex items-center space-x-3 mb-2">
+                  <Users className="w-6 h-6 text-emerald-600" aria-hidden="true" />
+                  <span className="text-sm font-medium text-emerald-800">Followers</span>
+                </div>
+                <div className="text-2xl font-bold text-emerald-900">
+                  {results.total.followers.toLocaleString()}
+                </div>
+              </div>
+              
+              <div className="bg-blue-50 border border-blue-200 p-6 rounded-xl">
+                <div className="flex items-center space-x-3 mb-2">
+                  <TrendingUp className="w-6 h-6 text-blue-600" aria-hidden="true" />
+                  <span className="text-sm font-medium text-blue-800">Following</span>
+                </div>
+                <div className="text-2xl font-bold text-blue-900">
+                  {results.total.following.toLocaleString()}
+                </div>
+              </div>
+              
+              <div className="bg-red-50 border border-red-200 p-6 rounded-xl">
+                <div className="flex items-center space-x-3 mb-2">
+                  <UserMinus className="w-6 h-6 text-red-600" aria-hidden="true" />
+                  <span className="text-sm font-medium text-red-800">Don&apos;t Follow Back</span>
+                </div>
+                <div className="text-2xl font-bold text-red-900">
+                  {results.total.unfollowers.toLocaleString()}
+                </div>
+              </div>
+              
+              <div className="bg-purple-50 border border-purple-200 p-6 rounded-xl">
+                <div className="flex items-center space-x-3 mb-2">
+                  <BarChart3 className="w-6 h-6 text-purple-600" aria-hidden="true" />
+                  <span className="text-sm font-medium text-purple-800">Follow Ratio</span>
+                </div>
+                <div className="text-2xl font-bold text-purple-900">
+                  {results.total.ratio}%
+                </div>
+              </div>
+            </div>
+
+            {/* Tab Navigation */}
+            <div className="flex flex-col space-y-6">
+              <div className="flex flex-wrap gap-2 p-1 bg-gray-100 rounded-xl" role="tablist">
+                {Object.entries(tabData).map(([key, { title, color, icon: IconComponent }]) => (
+                  <button
+                    key={key}
+                    onClick={() => setActiveTab(key)}
+                    className={`flex items-center space-x-2 px-4 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 ${
+                      activeTab === key
+                        ? `bg-white shadow-sm text-${color}-700 border border-${color}-200`
+                        : "text-gray-600 hover:text-gray-900 hover:bg-white/50"
+                    }`}
+                    role="tab"
+                    aria-selected={activeTab === key}
+                    aria-controls={`${key}-panel`}
+                    id={`${key}-tab`}
+                  >
+                    <IconComponent className="w-4 h-4" />
+                    <span className="hidden sm:inline">{title}</span>
+                    <span className="sm:hidden">{title.split(' ')[0]}</span>
+                  </button>
+                ))}
+              </div>
+
+              {/* Search Input */}
+              <div className="relative max-w-md">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" aria-hidden="true" />
+                <input
+                  type="text"
+                  placeholder="Search users..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="w-full pl-10 pr-4 py-3 text-sm bg-white border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 placeholder-gray-500 shadow-sm"
+                  aria-label="Search users"
+                />
+              </div>
+            </div>
+
+            {/* Tab Content */}
+            <div 
+              id={`${activeTab}-panel`}
+              role="tabpanel"
+              aria-labelledby={`${activeTab}-tab`}
+            >
+              {getTabContent()}
+            </div>
+
+            {/* Reset Button */}
+            <div className="pt-6 border-t border-gray-200 text-center">
+              <button
+                onClick={() => {
+                  setFollowersFile(null);
+                  setFollowingFile(null);
+                  setResults(null);
+                  setSearchTerm("");
+                }}
+                className="px-6 py-3 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 hover:border-gray-400 transition-all duration-200"
+              >
+                Upload Different Files
+              </button>
+            </div>
+          </div>
         )}
 
         {error && (
-          <div 
-            className="mt-4 p-3 sm:p-4 bg-red-900/20 border border-red-900 rounded-lg" 
-            role="alert"
-            aria-live="assertive"
-          >
-            <p className="text-xs sm:text-sm text-red-400">{error}</p>
+          <div className="m-8 mt-0">
+            <div 
+              className="p-4 bg-red-50 border border-red-200 rounded-xl flex items-start space-x-3" 
+              role="alert"
+              aria-live="assertive"
+            >
+              <AlertCircle className="w-5 h-5 text-red-600 mt-0.5 flex-shrink-0" />
+              <div>
+                <h4 className="text-sm font-semibold text-red-900 mb-1">Error Processing Files</h4>
+                <p className="text-sm text-red-800">{error}</p>
+              </div>
+            </div>
           </div>
         )}
       </div>

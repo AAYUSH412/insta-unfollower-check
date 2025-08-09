@@ -8,16 +8,19 @@ import NotFound from './components/NotFound'
 const App = () => {
   return (
     <BrowserRouter>
-    <SpeedInsights />
-      <div className="min-h-screen bg-gray-900">
-        <Header />
-        <main className="pt-16">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </main>
-        <Footer />
+      <SpeedInsights />
+      <div className="min-h-screen bg-white dark:bg-slate-900 relative overflow-x-hidden">
+        {/* Main content */}
+        <div className="relative z-10">
+          <Header />
+          <main className="pt-16">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
       </div>
     </BrowserRouter>
   )

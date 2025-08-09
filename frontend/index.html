@@ -2,21 +2,30 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/instagram.png" />
+    <!-- Modern favicon system -->
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png" />
+    <link rel="shortcut icon" href="/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
     <meta name="google-site-verification" content="zt9A_STXvRGIDDkpA_-eOL3Wx0dsu2o4UxtnZy9l2o4" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
     <title>Instagram Unfollower Checker - Find Who Unfollowed You | Free Tool</title>
     <meta name="description" content="Free Instagram unfollower checker tool. Find out who unfollowed you on Instagram, see non-followers, and analyze your follower stats instantly. No login required!" />
     <meta name="keywords" content="instagram unfollower checker, who unfollowed me on instagram, instagram followers tracker, instagram non-followers, instagram analytics, instagram follower tool, unfollowers detector, instagram insights" />
     <meta name="author" content="Insta Tracker" />
     
     <!-- PWA support -->
-    <link rel="manifest" href="/manifest.json" />
-    <meta name="theme-color" content="#8B5CF6" />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
+    <meta name="theme-color" content="#0066FF" />
     <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <meta name="apple-mobile-web-app-title" content="Insta Tracker" />
-    <link rel="apple-touch-icon" href="/instagram.png" />
+    <meta name="apple-mobile-web-app-title" content="Instagram Unfollower Checker" />
+    <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" />
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -55,9 +64,16 @@
         "name": "Insta Tracker",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://insta-unfollower-check.vercel.app/instagram.png"
+          "url": "https://insta-unfollower-check.vercel.app/favicon/favicon-96x96.png"
         }
-      }
+      },
+      "featureList": [
+        "Privacy-focused local processing",
+        "No login required",
+        "Instant analysis",
+        "Free to use",
+        "Works offline"
+      ]
     }
     </script>
   </head>
