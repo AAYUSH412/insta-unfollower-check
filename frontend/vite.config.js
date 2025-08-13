@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [react(), tailwindcss()],
   build: {
     // Optimize for production
-    minify: 'esbuild', // Changed from terser to esbuild for better performance
+    minify: 'esbuild',
     target: 'es2015',
     // Code splitting for better caching
     rollupOptions: {
@@ -15,14 +15,19 @@ export default defineConfig({
         manualChunks: {
           vendor: ['react', 'react-dom'],
           router: ['react-router-dom'],
-          icons: ['@heroicons/react', 'lucide-react'],
         },
+        // Use content-based file names for better caching
+        entryFileNames: 'assets/[name]-[hash].js',
+        chunkFileNames: 'assets/[name]-[hash].js',
+        assetFileNames: 'assets/[name]-[hash].[ext]'
       },
     },
     // Optimize chunk size
-    chunkSizeWarningLimit: 1000,
-    // Enable source maps for better debugging
+    chunkSizeWarningLimit: 500,
+    // Disable source maps for production
     sourcemap: false,
+    // Enable CSS code splitting
+    cssCodeSplit: true,
   },
   // Optimize dependencies
   optimizeDeps: {

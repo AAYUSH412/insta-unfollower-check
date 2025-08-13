@@ -26,13 +26,11 @@
     <link rel="dns-prefetch" href="//vercel.com">
     
     <!-- Resource hints for better performance -->
-    <link rel="preload" href="/src/main.jsx" as="script" crossorigin>
     <link rel="modulepreload" href="/src/main.jsx">
     
-    <!-- Critical CSS inlining prevention -->
+    <!-- Critical CSS to prevent layout shift -->
     <style>
-      /* Critical CSS to prevent layout shift */
-      html { line-height: 1.15; }
+      html { line-height: 1.15; font-display: swap; }
       body { margin: 0; font-family: system-ui, -apple-system, sans-serif; }
       #root { min-height: 100vh; }
       .loading { 
@@ -41,6 +39,11 @@
         justify-content: center; 
         min-height: 100vh; 
         background: #f8fafc;
+      }
+      /* Prevent cumulative layout shift */
+      img { max-width: 100%; height: auto; }
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
       }
     </style>
     
