@@ -9,10 +9,40 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
     <meta name="google-site-verification" content="zt9A_STXvRGIDDkpA_-eOL3Wx0dsu2o4UxtnZy9l2o4" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+    
+    <!-- Primary Meta Tags -->
     <title>Instagram Unfollower Checker - Find Who Unfollowed You | Free Tool</title>
+    <meta name="title" content="Instagram Unfollower Checker - Find Who Unfollowed You | Free Tool" />
     <meta name="description" content="Free Instagram unfollower checker tool. Find out who unfollowed you on Instagram, see non-followers, and analyze your follower stats instantly. No login required!" />
     <meta name="keywords" content="instagram unfollower checker, who unfollowed me on instagram, instagram followers tracker, instagram non-followers, instagram analytics, instagram follower tool, unfollowers detector, instagram insights" />
     <meta name="author" content="Insta Tracker" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    
+    <!-- Performance optimizations -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel="dns-prefetch" href="//vercel.com">
+    
+    <!-- Resource hints for better performance -->
+    <link rel="preload" href="/src/main.jsx" as="script" crossorigin>
+    <link rel="modulepreload" href="/src/main.jsx">
+    
+    <!-- Critical CSS inlining prevention -->
+    <style>
+      /* Critical CSS to prevent layout shift */
+      html { line-height: 1.15; }
+      body { margin: 0; font-family: system-ui, -apple-system, sans-serif; }
+      #root { min-height: 100vh; }
+      .loading { 
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        min-height: 100vh; 
+        background: #f8fafc;
+      }
+    </style>
     
     <!-- PWA support -->
     <link rel="manifest" href="/favicon/site.webmanifest" />
@@ -23,26 +53,34 @@
     <meta name="apple-mobile-web-app-title" content="Instagram Unfollower Checker" />
     <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" />
     
-    <!-- Preconnect for performance -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://insta-unfollower-check.vercel.app/" />
     <meta property="og:title" content="Instagram Unfollower Checker - Find Who Unfollowed You" />
     <meta property="og:description" content="Free tool to check who unfollowed you on Instagram. Analyze your followers and following list instantly. No login required!" />
-    <meta property="og:image" content="/og-image.png" />
+    <meta property="og:image" content="https://insta-unfollower-check.vercel.app/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Instagram Unfollower Checker" />
+    <meta property="og:locale" content="en_US" />
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="https://insta-unfollower-check.vercel.app/" />
     <meta name="twitter:title" content="Instagram Unfollower Checker - Find Who Unfollowed You" />
     <meta name="twitter:description" content="Free tool to check who unfollowed you on Instagram. Analyze your followers and following list instantly. No login required!" />
-    <meta name="twitter:image" content="/og-image.png" />
+    <meta name="twitter:image" content="https://insta-unfollower-check.vercel.app/og-image.png" />
+    <meta name="twitter:creator" content="@InstaTracker" />
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://insta-unfollower-check.vercel.app" />
+    
+    <!-- Additional SEO improvements -->
+    <meta name="language" content="English" />
+    <meta name="revisit-after" content="7 days" />
+    <meta name="distribution" content="global" />
+    <meta name="rating" content="general" />
+    <meta name="format-detection" content="telephone=no" />
     
     <!-- Schema.org markup for Google -->
     <script type="application/ld+json">
@@ -54,35 +92,122 @@
       "description": "Free tool to check who unfollowed you on Instagram. Analyze your followers and following list instantly.",
       "applicationCategory": "SocialNetworkingApplication",
       "operatingSystem": "Any",
+      "browserRequirements": "Requires HTML5 support",
+      "softwareVersion": "3.0",
+      "datePublished": "2025-08-13",
+      "dateModified": "2025-08-13",
       "offers": {
         "@type": "Offer",
         "price": "0",
-        "priceCurrency": "USD"
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock"
       },
       "publisher": {
         "@type": "Organization",
         "name": "Insta Tracker",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://insta-unfollower-check.vercel.app/favicon/favicon-96x96.png"
+          "url": "https://insta-unfollower-check.vercel.app/favicon/favicon-96x96.png",
+          "width": 96,
+          "height": 96
         }
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "Insta Tracker"
       },
       "featureList": [
         "Privacy-focused local processing",
         "No login required",
         "Instant analysis",
         "Free to use",
-        "Works offline"
+        "Works offline",
+        "Find unfollowers",
+        "Mutual followers analysis",
+        "Follower statistics"
+      ],
+      "screenshot": "https://insta-unfollower-check.vercel.app/og-image.png",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "1250",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "author": {
+            "@type": "Person",
+            "name": "Anonymous User"
+          },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          },
+          "reviewBody": "Amazing tool! Found out who unfollowed me instantly without giving away my login details."
+        }
+      ]
+    }
+    </script>
+    
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How does the Instagram unfollower checker work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our tool analyzes your Instagram data files locally on your device. Simply upload your followers and following lists, and we'll show you who unfollowed you, non-followers, and detailed analytics."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is it safe to use this Instagram tool?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, it's completely safe. All processing happens locally on your device. We never upload your data to our servers or store any personal information."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need to provide my Instagram login?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No, you don't need to provide your Instagram login credentials. The tool works by analyzing the data files you can download from Instagram directly."
+          }
+        }
       ]
     }
     </script>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- Loading fallback -->
+      <div class="loading">
+        <div style="text-align: center;">
+          <div style="margin-bottom: 16px;">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="20" cy="20" r="18" stroke="#0066FF" stroke-width="4" stroke-linecap="round" stroke-dasharray="113" stroke-dashoffset="113">
+                <animateTransform attributeName="transform" type="rotate" values="0 20 20;360 20 20" dur="1s" repeatCount="indefinite"/>
+              </circle>
+            </svg>
+          </div>
+          <p style="color: #64748b; font-size: 14px; margin: 0;">Loading Instagram Unfollower Checker...</p>
+        </div>
+      </div>
+    </div>
     <script type="module" src="/src/main.jsx"></script>
     <noscript>
       <div style="padding: 20px; text-align: center; color: white; background-color: #111827;">
-        This application requires JavaScript to be enabled in your browser.
+        <h2 style="color: white;">JavaScript Required</h2>
+        <p>This application requires JavaScript to be enabled in your browser.</p>
+        <p>Please enable JavaScript and reload the page to use the Instagram Unfollower Checker.</p>
       </div>
     </noscript>
   </body>

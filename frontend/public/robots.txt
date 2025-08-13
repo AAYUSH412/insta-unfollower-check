@@ -1,9 +1,25 @@
 User-agent: *
 Allow: /
 Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+Disallow: /.well-known/
+
+# Allow important crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
 
 # Sitemap
 Sitemap: https://insta-unfollower-check.vercel.app/sitemap.xml
 
-# Crawl-delay
-Crawl-delay: 10
+# Crawl-delay for better server performance
+Crawl-delay: 1

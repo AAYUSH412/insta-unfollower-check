@@ -61,20 +61,20 @@ const Home = () => {
               {/* Trust Indicators */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
                 <div className="text-center">
-                  <div className="text-2xl md:text-3xl font-bold text-blue-600 dark:text-blue-400">100%</div>
-                  <div className="text-sm text-slate-600 dark:text-slate-400">Private & Secure</div>
+                  <div className="text-2xl md:text-3xl font-bold text-blue-700 dark:text-blue-300">100%</div>
+                  <div className="text-sm text-slate-700 dark:text-slate-300 font-medium">Private & Secure</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl md:text-3xl font-bold text-emerald-600 dark:text-emerald-400">0</div>
-                  <div className="text-sm text-slate-600 dark:text-slate-400">Data Uploads</div>
+                  <div className="text-2xl md:text-3xl font-bold text-emerald-700 dark:text-emerald-300">0</div>
+                  <div className="text-sm text-slate-700 dark:text-slate-300 font-medium">Data Uploads</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl md:text-3xl font-bold text-purple-600 dark:text-purple-400">Instant</div>
-                  <div className="text-sm text-slate-600 dark:text-slate-400">Results</div>
+                  <div className="text-2xl md:text-3xl font-bold text-purple-700 dark:text-purple-300">Instant</div>
+                  <div className="text-sm text-slate-700 dark:text-slate-300 font-medium">Results</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl md:text-3xl font-bold text-amber-600 dark:text-amber-400">Free</div>
-                  <div className="text-sm text-slate-600 dark:text-slate-400">Forever</div>
+                  <div className="text-2xl md:text-3xl font-bold text-amber-700 dark:text-amber-300">Free</div>
+                  <div className="text-sm text-slate-700 dark:text-slate-300 font-medium">Forever</div>
                 </div>
               </div>
             </div>
@@ -90,7 +90,7 @@ const Home = () => {
               <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">
                 Why Choose Our Instagram Analytics Tool?
               </h2>
-              <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
+              <p className="text-xl text-slate-700 dark:text-slate-200 max-w-3xl mx-auto leading-relaxed">
                 Advanced features designed for privacy, security, and comprehensive Instagram insights
               </p>
             </div>
@@ -104,11 +104,11 @@ const Home = () => {
                     <ShieldCheckIcon className="w-7 h-7 text-blue-600 dark:text-blue-400" />
                   </div>
                   <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">Privacy First</h3>
-                  <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
+                  <p className="text-slate-700 dark:text-slate-200 leading-relaxed font-medium">
                     100% secure local processing - your Instagram data never leaves your device. 
                     We prioritize your privacy and security with client-side analytics only.
                   </p>
-                  <div className="mt-4 inline-flex items-center text-blue-600 dark:text-blue-400 font-semibold">
+                  <div className="mt-4 inline-flex items-center text-blue-700 dark:text-blue-300 font-semibold">
                     <span>Zero data uploads</span>
                     <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -125,11 +125,11 @@ const Home = () => {
                     <ArrowUpTrayIcon className="w-7 h-7 text-emerald-600 dark:text-emerald-400" />
                   </div>
                   <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">Easy to Use</h3>
-                  <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
+                  <p className="text-slate-700 dark:text-slate-200 leading-relaxed font-medium">
                     Simply upload your Instagram data files and get instant results. 
                     No technical knowledge required - intuitive interface with step-by-step guidance.
                   </p>
-                  <div className="mt-4 inline-flex items-center text-emerald-600 dark:text-emerald-400 font-semibold">
+                  <div className="mt-4 inline-flex items-center text-emerald-700 dark:text-emerald-300 font-semibold">
                     <span>3-step process</span>
                     <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -146,11 +146,11 @@ const Home = () => {
                     <ChartBarIcon className="w-7 h-7 text-purple-600 dark:text-purple-400" />
                   </div>
                   <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">Detailed Analytics</h3>
-                  <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
+                  <p className="text-slate-700 dark:text-slate-200 leading-relaxed font-medium">
                     Get comprehensive analysis of your followers, including non-followers, 
                     mutual connections, follower ratio, and detailed engagement insights.
                   </p>
-                  <div className="mt-4 inline-flex items-center text-purple-600 dark:text-purple-400 font-semibold">
+                  <div className="mt-4 inline-flex items-center text-purple-700 dark:text-purple-300 font-semibold">
                     <span>Advanced metrics</span>
                     <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
