@@ -1,5 +1,6 @@
 # 🔒 Security Policy
 
+
 ## 🛡️ Our Commitment
 
 Instagram Unfollower Checker is built with privacy and security as core principles. We take security issues seriously and appreciate responsible disclosure.
