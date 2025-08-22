@@ -2,7 +2,7 @@
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6&height=300&section=header&text=Instagram%20Unfollower%20Checker&fontSize=60&fontColor=fff&animation=fadeIn&fontAlignY=35&desc=Privacy-First%20•%20Lightning%20Fast%20•%20100%25%20Free&descAlignY=55&descSize=20" />
 
-<img src="https://readme-typing-svg.herokuapp.com?font=JetBrains+Mono&size=28&duration=2000&pause=500&color=gradient&center=true&vCenter=true&multiline=true&width=800&height=100&lines=🕵️+Find+Who+Unfollowed+You;📊+Privacy-First+Analytics;⚡+100%25+Client-Side+Processing;🚀+No+Login+•+No+Tracking" alt="Typing Animation" />
+<img src="https://readme-typing-svg.herokuapp.com?font=JetBrains+Mono&size=28&duration=2000&pause=500&color=gradient&center=true&vCenter=true&multiline=true&width=800&height=200&lines=🕵️+Find+Who+Unfollowed+You;📊+Privacy-First+Analytics;⚡+100%25+Client-Side+Processing;🚀+No+Login+•+No+Tracking" alt="Typing Animation" />
 
 <br>
 
@@ -23,15 +23,15 @@
 
 <!-- Live Status Indicators -->
 <p align="center">
-  <img src="https://img.shields.io/badge/�_Live-Demo-success?style=flat-square&labelColor=000&color=00ff88" alt="Live Demo" />
+  <img src="https://img.shields.io/badge/🔴_Live-Demo-success?style=flat-square&labelColor=000&color=00ff88" alt="Live Demo" />
   <img src="https://img.shields.io/badge/⚡_Performance-A+-ff6b6b?style=flat-square&labelColor=000" alt="Performance" />
   <img src="https://img.shields.io/badge/🔒_Privacy-First-4ecdc4?style=flat-square&labelColor=000" alt="Privacy" />
-  <img src="https://img.shields.io/badge/�_Mobile-Optimized-45b7d1?style=flat-square&labelColor=000" alt="Mobile" />
+  <img src="https://img.shields.io/badge/📱_Mobile-Optimized-45b7d1?style=flat-square&labelColor=000" alt="Mobile" />
 </p>
 
 ---
 
-## � What is Instagram Unfollower Checker?
+## 🌟 What is Instagram Unfollower Checker?
 
 <table>
 <tr>
@@ -352,7 +352,7 @@ Results
 </tr>
 </table>
 
-### � **Algorithm Details**
+### ⚙️ **Algorithm Details**
 
 <details>
 <summary>🧠 <strong>Core Algorithms</strong></summary>
@@ -376,7 +376,7 @@ const findUnfollowers = (followers, following) => {
 **Performance:** Processes 100K+ followers in <500ms
 </details>
 
-## �️ Tech Stack & Dependencies
+## ❇️ Tech Stack & Dependencies
 
 <div align="center">
 <img src="https://skillicons.dev/icons?i=react,vite,tailwind,js,html,css,vercel,github&perline=8" alt="Tech Stack" />
@@ -478,7 +478,7 @@ const findUnfollowers = (followers, following) => {
 - [ ] 🎨 **3D Visualizations** with Three.js
 - [ ] 🔄 **Real-time Updates** with WebSockets
 
-## � Screenshots & Demo
+## 🖵 Screenshots & Demo
 
 <div align="center">
 <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=24&height=200&section=header&text=Live%20Demo%20%26%20Screenshots&fontSize=40&fontColor=fff&animation=twinkling" />
@@ -573,7 +573,7 @@ We're building the **future of privacy-first social media analytics**! Every con
 <td width="33%" align="center">
 
 #### 🔥 **Code Contributors**
-<img src="https://contrib.rocks/image?repo=AAYUSH412/insta-unfollower-check" alt="Contributors" />
+<img src="https://img.shields.io/github?repo=AAYUSH412/insta-unfollower-check" alt="Contributors" />
 
 **Top Contributors:**
 - [@AAYUSH412](https://github.com/AAYUSH412) - Creator & Maintainer
